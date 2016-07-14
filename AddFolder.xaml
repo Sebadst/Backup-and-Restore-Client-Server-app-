@@ -1,0 +1,16 @@
+﻿<Window x:Class="ProgettoPDS.AddFolder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <Button x:Name="choose_folder" Content="Choose Folder" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="148,160,0,0" Click="choose_folder_Click"/>
+        <Button x:Name="load_folder" Content="Load Folder" HorizontalAlignment="Left" Margin="148,242,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.15,1.19" Click="load_folder_Click"/>
+        <TextBlock x:Name="path" HorizontalAlignment="Left" Margin="330,160,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="20" Width="204"/>
+        <Label x:Name="message" HorizontalAlignment="Center" Margin="171,137,10,153" VerticalAlignment="Center" Width="336" Height="29" RenderTransformOrigin="0.551,1.379" Foreground="#FFB69595"/>
+        <ProgressBar HorizontalAlignment="Center" Height="24" Margin="30,264,30,0" VerticalAlignment="Top" Width="108" IsIndeterminate="True" x:Name="pbar"/>
+
+    </Grid>
+</Window>
