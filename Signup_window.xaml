@@ -15,7 +15,7 @@
         <TextBox x:Name="username" HorizontalAlignment="Center" Height="36" Margin="232,44,238,289" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="122" RenderTransformOrigin="-0.265,-4.26"/>
         <PasswordBox x:Name="password" HorizontalAlignment="Center" Height="38" VerticalAlignment="Center" Width="120" Margin="232,120,240,211"/>
         <PasswordBox x:Name="repassword" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="120" Margin="232,204,240,135"/>
-        <TextBox x:Name="message" HorizontalAlignment="Center" Height="35" Margin="234,251,238,83" TextWrapping="Wrap" Text="message" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="message" HorizontalAlignment="Center" Height="35" Margin="214,256,60,88" VerticalAlignment="Center" Width="328"/>
         <Label Content="Username"  FontFamily="SketchFlow Print" FontSize="14" Foreground="#FFB69595" HorizontalAlignment="Center" Margin="234,10,238,330" VerticalAlignment="Center" Width="120" Height="29"/>
         <Label Content="Password"   FontFamily="SketchFlow Print" FontSize="14" Foreground="#FFB69595" HorizontalAlignment="Center" Margin="234,85,276,254" VerticalAlignment="Center" RenderTransformOrigin="-1.678,-3.12" Height="30" Width="82"/>
         <Label Content="Repeat Password"   FontFamily="SketchFlow Print" FontSize="14" Foreground="#FFB69595" HorizontalAlignment="Center" Margin="237,168,231,180" VerticalAlignment="Center" Height="31" Width="134"/>

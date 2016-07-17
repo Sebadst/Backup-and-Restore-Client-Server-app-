@@ -29,12 +29,12 @@ namespace ProgettoPDS
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
             if (username.Text == "" || password.Password == "" || repassword.Password == "")
-                message.Text = "Non lasciare campi vuoti";
+                message.Content = "Non lasciare campi vuoti";
             else if (password.Password != repassword.Password)
-                message.Text = "password diversa da ripeti password";
+                message.Content = "password diversa da ripeti password";
             else
             {
-                message.Text = "Ok";
+                message.Content = "Ok";
                 //ora devo controllare se e' gia presente un utente con questo nome
                 Client client = new Client(username.Text, password.Password);
                 //DECOMMENTARE
@@ -61,12 +61,12 @@ namespace ProgettoPDS
                 {
                     //credenziali errate
                     //stampo un messaggio e do la possibilita di rifare il signup
-                    message.Text = "L'utente e' gia' presente";
+                    message.Content = "L'utente e' gia' presente";
                 }
                 else
                 {
                     //errore di connessione
-                    message.Text = "Nessuna risposta dal server";
+                    message.Content = "Nessuna risposta dal server";
                 }
                 
                

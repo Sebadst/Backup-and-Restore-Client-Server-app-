@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-
+using System.Globalization;
 namespace ProgettoPDS
 {
     /// <summary>
@@ -56,19 +56,33 @@ namespace ProgettoPDS
         }
 
        
-        
+        // I need to pass ViewFolder since I'll recall this method in other classes (right?)
         public void create_tree(List<string>items,ViewFolder v){
+            string []format = {"yyyyMMdd-HHmm"};
+            DateTime date;
             MenuItem other_root = null;
             List<string> paths=new List<string>();
             Dictionary<string, MenuItem> d = new Dictionary<string, MenuItem>();
-            MenuItem root = new MenuItem() { Title = System.IO.Path.GetDirectoryName(items[0]) };
-            root.Items.Add(new MenuItem() { Title = items[0]});
-            d.Add(System.IO.Path.GetDirectoryName(items[0]), root);
-            string previous_path = System.IO.Path.GetDirectoryName(items[0]);
-            paths.Add(System.IO.Path.GetDirectoryName(items[0]));
-            //starting from the 2nd element
-            foreach (string filename in items.GetRange(1,items.Count-1))
+            Console.WriteLine(items[0]);
+            MenuItem data = new MenuItem() { Title = items[0] };
+            MenuItem other_data = null;
+            v.folders.Items.Add(data);
+            MenuItem root = new MenuItem() { Title = System.IO.Path.GetDirectoryName(items[1]) };
+            root.Items.Add(new MenuItem() { Title = items[1]});
+            d.Add(System.IO.Path.GetDirectoryName(items[1]), root);
+            string previous_path = System.IO.Path.GetDirectoryName(items[1]);
+            paths.Add(System.IO.Path.GetDirectoryName(items[1]));
+            //starting from the 3nd element
+            foreach (string filename in items.GetRange(2,items.Count-2))
             {
+                if (DateTime.TryParseExact(filename, format, new CultureInfo("en-US"),
+                              DateTimeStyles.None, out date))
+                {
+                    Console.WriteLine(filename);
+                    other_data = new MenuItem() { Title = filename };
+                    
+                    continue;
+                }
                 //take the path
                 string path=System.IO.Path.GetDirectoryName(filename);
                 //check if it contains the previous path
@@ -123,6 +137,7 @@ namespace ProgettoPDS
                         //first time will not do it, other times yes
                         if (other_root != null)
                         {
+                            v.folders.Items.Add(other_data);
                             v.folders.Items.Add(other_root);
                         }
                         other_root = new MenuItem() { Title = path };
@@ -138,15 +153,21 @@ namespace ProgettoPDS
             if (root != null)
                 v.folders.Items.Add(root);
             //for the last time
+            v.folders.Items.Add(other_data);
             v.folders.Items.Add(other_root);
             
         }
         private void download_Click(object sender, RoutedEventArgs e)
         {
+            string[] format = { "yyyyMMdd-HHmm" };
+            DateTime date;
             try
             {
                 String f = (folders.SelectedItem as MenuItem).Title;
                 //Console.WriteLine(f.Title);
+                if (DateTime.TryParseExact(f, format, new CultureInfo("en-US"),
+                                DateTimeStyles.None, out date))
+                    return;
                 client.connect_to_server();
                 client.download_file(f);
             }
