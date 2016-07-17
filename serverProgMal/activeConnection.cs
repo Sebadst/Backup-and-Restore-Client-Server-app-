@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace serverProgMal
+namespace serverPDS
 {
     class activeConnection
     {
@@ -22,6 +22,6 @@ namespace serverProgMal
             get;
             set;
         }
-        
+
     }
 }

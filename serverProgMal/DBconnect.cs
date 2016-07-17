@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
 
-namespace serverProgMal
+namespace ServerPDS
 {
     class DBConnect
     {
@@ -95,7 +95,7 @@ namespace serverProgMal
 
                 //Execute command
                 cmd.ExecuteNonQuery();
-                
+
 
                 //close connection
                 this.CloseConnection();
@@ -139,7 +139,7 @@ namespace serverProgMal
             }
         }
 
-        
+
         //Count statement
         public int Count(string qry)
         {
@@ -188,9 +188,9 @@ namespace serverProgMal
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    list[0].Add(dataReader["id"] + "");
-                    list[1].Add(dataReader["name"] + "");
-                    list[2].Add(dataReader["age"] + "");
+                    list[0].Add(dataReader["username"] + "");
+                    list[1].Add(dataReader["password"] + "");
+                    list[2].Add(dataReader["folder"] + "");
                 }
 
                 //close Data Reader

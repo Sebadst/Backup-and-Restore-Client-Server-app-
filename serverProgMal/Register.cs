@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using System.Threading;
 using MySql.Data.MySqlClient;
 
-namespace serverProgMal
+namespace ServerPDS
 {
     class Register
     {
@@ -19,7 +19,7 @@ namespace serverProgMal
         private Socket s;
         Thread t;
         DBConnect db;
-        
+
         public Register(Socket s, string username, string password)
         {
             this.s = s;
@@ -35,10 +35,10 @@ namespace serverProgMal
         private void action()
         {
             string query = "select count(*) from utenti where username = " + "'" + username + "'";
-            if(db.Count(query) <= 0)
+            if (db.Count(query) <= 0)
             {
 
-                query = "insert into utenti(uid, username, password) values(" + 0 + "," + "'" + username + "'" + "," + "'" + password + "'" + ")";
+                query = "insert into utenti(username, password,folder) values('" + username + "'" + "," + "'" + password + "'" + ","+"'" + " " +"'" +")";
                 db.Insert(query);
                 byte[] msg = Encoding.ASCII.GetBytes("OK");
                 s.Send(msg);

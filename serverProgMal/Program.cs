@@ -9,19 +9,19 @@ using System.Net.Sockets;
 
 using System.Collections.Concurrent;
 
-namespace serverProgMal
+namespace ServerPDS
 {
     class Program
     {
         // Incoming data from the client.
         public static string data = null;
-        
+
 
         //funzione
         public static void recognizeCommand(string str, Socket sock, BlockingCollection<string> ac)
         {
             //Console.WriteLine("dentro");
-            if(String.Compare(str.Substring(0,2), "R.") != 0 && String.Compare(str.Substring(0, 2), "L.") != 0)
+            if (String.Compare(str.Substring(0, 2), "R.") != 0 && String.Compare(str.Substring(0, 2), "L.") != 0)
             {
                 Console.WriteLine("E.comando errato");
                 byte[] msg = Encoding.ASCII.GetBytes("E.comando errato");
@@ -30,11 +30,11 @@ namespace serverProgMal
                 sock.Close();
                 return;
             }
-            
+
             char[] delimiterChars = { '.', '\t', '<' };
             string[] words = str.Split(delimiterChars);
 
-            if(words.Length != 4)
+            if (words.Length != 4)
             {
                 Console.WriteLine("E.comando errato");
                 byte[] msg = Encoding.ASCII.GetBytes("E.comando errato");
@@ -87,7 +87,7 @@ namespace serverProgMal
                 // Start listening for connections.
                 while (true)
                 {
-                    Console.WriteLine("serverAddress: "+localEndPoint.ToString());
+                    Console.WriteLine("serverAddress: " + localEndPoint.ToString());
                     Console.WriteLine("Waiting for a connection...");
                     // Program is suspended while waiting for an incoming connection.
                     Socket handler = listener.Accept();
@@ -110,7 +110,7 @@ namespace serverProgMal
                     // Show the data on the console.
                     Console.WriteLine("Text received : {0}", data);
                     recognizeCommand(data, handler, connessioniAttive);
-                    
+
                 }
 
             }

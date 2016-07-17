@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace serverProgMal
+namespace ServerPDS
 {
     public static class MyGlobal
     {
-       public static string rootFolder = "C:\\RootFolderUseres";
+        public static string rootFolder = "C:\\RootFolderUseres";
     }
 }
